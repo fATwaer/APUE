@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_base	5-11.c	38;"	d	file:
+_flag	5-11.c	36;"	d	file:
+_ptr	5-11.c	37;"	d	file:
+buffer_size	5-11.c	/^buffer_size(FILE *fp)$/;"	f
+foo	envtest.c	/^int foo()$/;"	f
+is_linebuffered	5-11.c	/^is_linebuffered(FILE *fp)$/;"	f
+is_unbuffered	5-11.c	/^is_unbuffered(FILE *fp)$/;"	f
+main	5-11.c	/^main()$/;"	f
+main	envtest.c	/^int main()$/;"	f
+main	test.c	/^main()$/;"	f
+pr_stdio	5-11.c	/^void pr_stdio(const char* name, FILE *fp)$/;"	f
