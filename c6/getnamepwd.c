@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include <pwd.h>
 #include <stddef.h>
 #include <string.h>
