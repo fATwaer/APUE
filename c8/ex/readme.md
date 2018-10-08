@@ -1,3 +1,4 @@
 __echoarg__ : print all arguments by for loop.
-__interp.file__ : interpret file, which should copy to one of `$PATH` and change privilige like `sudo chmode o+x $PATH/interpr.file`.
+
+__interp.file__ : interpret file, which should copy to one of `$PATH` and change privilige by`sudo chmode o+x $PATH/interpr.file`.
 
