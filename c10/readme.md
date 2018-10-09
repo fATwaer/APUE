@@ -66,7 +66,7 @@ alarm signal interupts the sig\_int handler.
         sig_int handler finished
         sleep2 returned 7
 
-    Q: ? after sig\_int handler returned, it activates the pause() func? , and than the sleep2() returns;
+    Q: ? after sig\_int handler returned, it activates the `pause()` func? , and than the `sleep2()` returns;
 
 
 
