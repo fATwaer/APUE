@@ -41,11 +41,11 @@ same as before
 
 - loop time
 
-    [moonlight@ArchLinux c10]$ time ./a.out
+        [moonlight@ArchLinux c10]$ time ./a.out
 
-    real	0m11.516s
-    user	0m11.508s
-    sys	0m0.000s
+        real	0m11.516s
+        user	0m11.508s
+        sys	0m0.000s
 
 
 
@@ -66,7 +66,7 @@ alarm signal interupts the sig\_int handler.
         sig\_int handler finished
         sleep2 returned 7
 
-Q: ? after sig\_int handler returned, it activates the pause() func? , and than the sleep2() returns;
+    Q: ? after sig\_int handler returned, it activates the pause() func? , and than the sleep2() returns;
 
 
 
