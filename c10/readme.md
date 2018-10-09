@@ -5,6 +5,9 @@
     $ kill -USR2 pid
     $ kill pid
 
+be careful with the function signal(), it just push the handler function into the process stack. after catching the signal and calling the handler, the handler function pointer will be `pop` out.
+
+
 ## sigchld
 1).\_exit(0)
 
@@ -37,7 +40,7 @@ before child become zombie process
  
 same as before 
 
-## 10-9.c
+## 10-9
 
 - loop time
 
@@ -69,7 +72,42 @@ alarm signal interupts the sig\_int handler.
     Q: ? after sig\_int handler returned, it activates the `pause()` func? , and than the `sleep2()` returns;
 
 
+# 10-15
 
+    [moonlight@ArchLinux c10]$ ./a.out 
+    ^\^\^\^\
+    SIGQUIT pending
+    caught SIGQUIT
+    SIGQUIT unblocked
+    ^\Quit (core dumped)
+    [moonlight@ArchLinux c10]$
      
+# 10-20
 
+- sigsetjump version
+     
+        [moonlight@ArchLinux c10]$ ./a.out  &
+        [1] 5968
+        [moonlight@ArchLinux c10]$ starting main: 
+        kill -USR1 5968
+        starting sig_usr1:  SIGUSR1
+        [moonlight@ArchLinux c10]$ in sig_alarm:  SIGUSR1 SIGALRM
+        finishing sig_usr1:  SIGUSR1
+        ending main: 
 
+        [1]+  Done                    ./a.out
+
+- setjump version
+        
+        [moonlight@ArchLinux c10]$ ./a.out  &
+        [1] 6178
+        [moonlight@ArchLinux c10]$ starting main:
+        kill -USR1 6178
+        starting sig_usr1:  SIGUSR1
+        [moonlight@ArchLinux c10]$ in sig_alarm:  SIGUSR1 SIGALRM
+        finishing sig_usr1:  SIGUSR1
+        ending main:  SIGUSR1
+
+        [1]+  Done                    ./a.out
+
+when the signal arrived, the new comming signal is masked automaticly before calling handler. when the handler returns, this signal will be removed from the mask list. but before the `setjump` version program returning, it called `longjmp` and don't recover the mask list, the `SIGUSR1` is still blocked.
