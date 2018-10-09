@@ -27,13 +27,14 @@
 3). wait(NULL)
 before child become zombie process
 
-[moonlight@ArchLinux c10]$ ps -o pid,ppid,comm
-  PID  PPID COMMAND
- 1512  1333 bash
- 1939  1512 a.out
- 1942  1512 ps
+    [moonlight@ArchLinux c10]$ ps -o pid,ppid,comm
+      PID  PPID COMMAND
+     1512  1333 bash
+     1939  1512 a.out
+     1942  1512 ps
 
-4). after 
+4). after
+ 
 same as before 
 
 ## 10-9.c
@@ -50,22 +51,22 @@ same as before
 
 - sleep time < loop time
 
-    [moonlight@ArchLinux c10]$ ./a.out 
-    ^C
-    sig\_int handler starting
-    sleep2 returned 0
+        [moonlight@ArchLinux c10]$ ./a.out 
+        ^C
+        sig\_int handler starting
+        sleep2 returned 0
 
 alarm signal interupts the sig\_int handler.
 
 - sleep time > loop time
 
-    [moonlight@ArchLinux c10]$ ./a.out
-    ^C
-    sig\_int handler starting
-    sig\_int handler finished
-    sleep2 returned 7
+        [moonlight@ArchLinux c10]$ ./a.out
+        ^C
+        sig\_int handler starting
+        sig\_int handler finished
+        sleep2 returned 7
 
-Q: ? after sig\_int handler returned, it actives the pause() func? , and than the sleep2() returns;
+Q: ? after sig\_int handler returned, it activates the pause() func? , and than the sleep2() returns;
 
 
 
