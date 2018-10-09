@@ -53,7 +53,7 @@ same as before
 
         [moonlight@ArchLinux c10]$ ./a.out 
         ^C
-        sig\_int handler starting
+        sig_int handler starting
         sleep2 returned 0
 
 alarm signal interupts the sig\_int handler.
@@ -62,8 +62,8 @@ alarm signal interupts the sig\_int handler.
 
         [moonlight@ArchLinux c10]$ ./a.out
         ^C
-        sig\_int handler starting
-        sig\_int handler finished
+        sig_int handler starting
+        sig_int handler finished
         sleep2 returned 7
 
     Q: ? after sig\_int handler returned, it activates the pause() func? , and than the sleep2() returns;
