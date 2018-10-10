@@ -51,7 +51,7 @@ int
 main()
 {
     FILE *fp;
-    int n;
+    int n, m;
     pid_t pid;
 
     n = 0;
@@ -72,7 +72,7 @@ main()
         while (1) {
 
             n = critical_action(fp, n, "child");
-            sleep(2);
+            sleep(1);
 
             _TELL_PARENT(getppid());
             _WAIT_PARENT();
@@ -82,11 +82,12 @@ main()
 
     /** parent increase, waiting child signal*/
     while (1) {
-        _TELL_CHILD(pid);
         _WAIT_CHILD();
 
         n = critical_action(fp, n, "parent");
-        sleep(2);
+        sleep(1);
+
+        _TELL_CHILD(pid);
     }
 
 
@@ -111,6 +112,9 @@ critical_action(FILE* fp, int n, char *member)
     if (fwrite(&n, sizeof(int), 1, fp) != 1)
         err_sys("fwrite error");
 
+    /** be care with here, must flush the date into disk*/
+    /** standard I/O buffer */
+    fflush(fp);
     return n;
 }
 
