@@ -111,3 +111,39 @@ alarm signal interupts the sig\_int handler.
         [1]+  Done                    ./a.out
 
 when the signal arrived, the new comming signal is masked automaticly before calling handler. when the handler returns, this signal will be removed from the mask list. but before the `setjump` version program returning, it called `longjmp` and don't recover the mask list, the `SIGUSR1` is still blocked.
+
+## 10-22
+
+__sigsuspend:__ set mask signal & pause
+
+    [moonlight@ArchLinux c10]$ ./a.out
+    program start:
+    critical region SIGINT
+    ^C
+    in sig_int:  SIGUSR1
+    after return from sigsuspend:  SIGINT
+    program exit: 
+
+## 10-23
+
+    [moonlight@ArchLinux c10]$ ./a.out
+    ^C
+    Interrupt
+    ^C
+    Interrupt
+    ^\[moonlight@ArchLinux c10]$
+
+* use 10-18 signal() function 
+
+
+## 10-28
+
+    [moonlight@ArchLinux c10]$ ./a.out 
+    execute sh...
+    q
+    before reset mask
+    caught SIGCHLD
+    system return
+    [moonlight@ArchLinux c10]$ 
+
+SIGCHLD was blocked before reset mask via `sigprocmask()`, and called handled between reseting mask and system() returning.
