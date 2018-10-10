@@ -147,3 +147,33 @@ __sigsuspend:__ set mask signal & pause
     [moonlight@ArchLinux c10]$ 
 
 SIGCHLD was blocked before reset mask via `sigprocmask()`, and called handled between reseting mask and system() returning.
+
+be careful,
+``` C
+while (waitpid(pid, &status, 0) < 0)
+if (errno != EINTR) {
+    status = -1;
+    break;
+}
+```
+
+`waitpid()` returned -1 when the child of the parent process all terminated , and the `for` loop was going to breaking.
+
+## 10-31
+
+    [moonlight@ArchLinux c10]$ ./a.out
+    studio Don Juan
+    studio Don Juan
+    ^Zsuspend and back to terminal
+    waiting SIGCONT ....
+
+    [2]+  Stopped                 ./a.out
+    [moonlight@ArchLinux c10]$ fg 2
+    ./a.out
+    proc continue executing
+
+
+    [moonlight@ArchLinux c10]$
+
+`"when the signal arrived, the new comming signal is masked automaticly before calling handler."`
+
