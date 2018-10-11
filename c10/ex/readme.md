@@ -29,3 +29,24 @@ A struct object was writen by `write()`, and the first line prints the member of
 Q: why the implement of abort() need send SIGABT twice ?
 
 ## 10-9
+
+the type `sigset_t` cann't do shift/and/or operation, because it was implemented as struct:
+
+``` C
+typedef __sigset_t sigset_t;
+
+#define _SIGSET_NWORDS (1024 / (8 * sizeof (unsigned long int)))
+typedef struct
+{
+  unsigned long int __val[_SIGSET_NWORDS];
+} __sigset_t;
+```
+
+when I implementing the `pr_mask()`, I cast the sitset\_t to `unsigned long int`, I don't know if the method will work(cann't cross platform?).
+
+``` C
+unsigned long int*set = (unsigned long int*)mask;
+return ((*set & (1 << (signo - 1))) != 0);
+```
+
+
