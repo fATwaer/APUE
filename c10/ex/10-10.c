@@ -31,12 +31,11 @@ main(void)
     pr_time();
     i = 0;
     while (1) {
-        
+        i++;
         sleep(60);
-        if (i == 4) {
+        if (i == 5) {
             pr_time();
             i = 0;
         }
-        i++;
     }
 }

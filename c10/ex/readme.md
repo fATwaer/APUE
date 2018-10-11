@@ -51,6 +51,98 @@ return ((*set & (1 << (signo - 1))) != 0);
 
 ## 10-10
 
+    [moonlight@ArchLinux ex]$ vim 10-10.c
+    [moonlight@ArchLinux ex]$ gcc 10-10.c -lapue
+    [moonlight@ArchLinux ex]$ ./a.out
+    time: 12:25:50 AM, Fri Oct 12, 2018
+    time: 12:30:50 AM, Fri Oct 12, 2018
+    time: 12:35:50 AM, Fri Oct 12, 2018
+    time: 12:40:50 AM, Fri Oct 12, 2018
+    time: 12:45:50 AM, Fri Oct 12, 2018
+    time: 12:50:50 AM, Fri Oct 12, 2018
+    time: 12:55:50 AM, Fri Oct 12, 2018
+    time: 01:00:50 AM, Fri Oct 12, 2018
+    time: 01:05:50 AM, Fri Oct 12, 2018
+    time: 01:10:50 AM, Fri Oct 12, 2018
+    time: 01:15:50 AM, Fri Oct 12, 2018
+    time: 01:20:50 AM, Fri Oct 12, 2018
+    time: 01:25:50 AM, Fri Oct 12, 2018
+    time: 01:30:50 AM, Fri Oct 12, 2018
+    time: 01:35:50 AM, Fri Oct 12, 2018
+    time: 01:40:50 AM, Fri Oct 12, 2018
+    time: 01:45:50 AM, Fri Oct 12, 2018
+    time: 01:50:50 AM, Fri Oct 12, 2018
+    time: 01:55:50 AM, Fri Oct 12, 2018
+    time: 02:00:50 AM, Fri Oct 12, 2018
+    time: 02:05:50 AM, Fri Oct 12, 2018
+    time: 02:10:50 AM, Fri Oct 12, 2018
+    time: 02:15:50 AM, Fri Oct 12, 2018
+    time: 02:20:50 AM, Fri Oct 12, 2018
+    time: 02:25:50 AM, Fri Oct 12, 2018
+    time: 02:30:50 AM, Fri Oct 12, 2018
+    time: 02:35:50 AM, Fri Oct 12, 2018
+    time: 02:40:50 AM, Fri Oct 12, 2018
+    time: 02:45:50 AM, Fri Oct 12, 2018
+    time: 02:50:50 AM, Fri Oct 12, 2018
+    time: 02:55:50 AM, Fri Oct 12, 2018
+    time: 03:00:50 AM, Fri Oct 12, 2018
+    time: 03:05:50 AM, Fri Oct 12, 2018
+    time: 03:10:50 AM, Fri Oct 12, 2018
+    time: 03:15:50 AM, Fri Oct 12, 2018
+    time: 03:20:50 AM, Fri Oct 12, 2018
+    time: 03:25:50 AM, Fri Oct 12, 2018
+    time: 03:30:50 AM, Fri Oct 12, 2018
+    time: 03:35:50 AM, Fri Oct 12, 2018
+    time: 03:40:50 AM, Fri Oct 12, 2018
+    time: 03:45:50 AM, Fri Oct 12, 2018
+    time: 03:50:50 AM, Fri Oct 12, 2018
+    time: 03:55:50 AM, Fri Oct 12, 2018
+    time: 04:00:50 AM, Fri Oct 12, 2018
+    time: 04:05:50 AM, Fri Oct 12, 2018
+    time: 04:10:50 AM, Fri Oct 12, 2018
+    time: 04:15:50 AM, Fri Oct 12, 2018
+    time: 04:20:50 AM, Fri Oct 12, 2018
+    time: 04:25:50 AM, Fri Oct 12, 2018
+    time: 04:30:50 AM, Fri Oct 12, 2018
+    time: 04:35:50 AM, Fri Oct 12, 2018
+    time: 04:40:50 AM, Fri Oct 12, 2018
+    time: 04:45:50 AM, Fri Oct 12, 2018
+    time: 04:50:50 AM, Fri Oct 12, 2018
+    time: 04:55:50 AM, Fri Oct 12, 2018
+    time: 05:00:50 AM, Fri Oct 12, 2018
+    time: 05:05:50 AM, Fri Oct 12, 2018
+    time: 05:10:50 AM, Fri Oct 12, 2018
+    time: 05:15:50 AM, Fri Oct 12, 2018
+    time: 05:20:50 AM, Fri Oct 12, 2018
+    time: 05:25:50 AM, Fri Oct 12, 2018
+    time: 05:30:50 AM, Fri Oct 12, 2018
+    time: 05:35:50 AM, Fri Oct 12, 2018
+    time: 05:40:50 AM, Fri Oct 12, 2018
+    time: 05:45:50 AM, Fri Oct 12, 2018
+    time: 05:50:50 AM, Fri Oct 12, 2018
+    time: 05:55:50 AM, Fri Oct 12, 2018
+    time: 06:00:50 AM, Fri Oct 12, 2018
+    time: 06:05:50 AM, Fri Oct 12, 2018
+    time: 06:10:50 AM, Fri Oct 12, 2018
+    time: 06:15:50 AM, Fri Oct 12, 2018
+    time: 06:20:50 AM, Fri Oct 12, 2018
+    time: 06:25:50 AM, Fri Oct 12, 2018
+    time: 06:30:50 AM, Fri Oct 12, 2018
+    time: 06:35:50 AM, Fri Oct 12, 2018
+    time: 06:40:50 AM, Fri Oct 12, 2018
+    time: 06:45:50 AM, Fri Oct 12, 2018
+    time: 06:50:50 AM, Fri Oct 12, 2018
+    time: 06:55:50 AM, Fri Oct 12, 2018
+    time: 07:00:50 AM, Fri Oct 12, 2018
+    time: 07:05:50 AM, Fri Oct 12, 2018
+    time: 07:10:50 AM, Fri Oct 12, 2018
+    time: 07:15:50 AM, Fri Oct 12, 2018
+    time: 07:20:50 AM, Fri Oct 12, 2018
+    time: 07:25:50 AM, Fri Oct 12, 2018
+    time: 07:30:50 AM, Fri Oct 12, 2018
+    time: 07:35:50 AM, Fri Oct 12, 2018
+
+
 
 ## 10-11
 
