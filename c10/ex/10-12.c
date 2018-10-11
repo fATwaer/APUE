@@ -25,27 +25,39 @@ signal(int signo, Sigfunc *func)
     return (oact.sa_handler);
 }
 
+static void
+sig_alrm(int signo)
+{
+    printf("caught SIGALRM\n");
+}
+
 #define KBSZ (1024)
 #define MBSZ (1024 * KBSZ)
 #define GBSZ (1024 * MBSZ)
+
 int
 main()
 {
     void *buff;
     FILE *fp;
     int ret;
-
+    
     buff = (void *)malloc(sizeof(char) * GBSZ);
     memset(buff, '9', GBSZ);
-    if ((fp = fopen("BIG.file", "w+")) != NULL)
+    
+    if ((fp = fopen("BIG.file", "w+")) == NULL)
         err_sys("fopen error");
+    if ((signal(SIGALRM, sig_alrm)) == SIG_ERR)
+        err_sys("SIGALRM error");
 
     alarm(1);
     if ((ret = fwrite(buff, sizeof(char), GBSZ, fp)) != GBSZ)
     {
-        printf("fwrite return = %d\n", ret);
+        fprintf(stderr, "fwrite return = %d\n", ret);
         err_sys("fwrite error");
     }
+    printf("end fwrite\n");
+    exit(0);
 
 }
 

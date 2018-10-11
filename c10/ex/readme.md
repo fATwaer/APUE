@@ -49,4 +49,26 @@ unsigned long int*set = (unsigned long int*)mask;
 return ((*set & (1 << (signo - 1))) != 0);
 ```
 
+## 10-10
+
+
+## 10-11
+
+In the Linux 3.2.0, Mac OS X 10.6.8 Solaris, `the handler of SIGXFSZ never be called`.
+
+use 
+
+    dd if=/dev/null of=2M.file bs=1M count=2
+
+to generate a disignated size file.
+
+## 10-12
+
+    [moonlight@ArchLinux ex]$ ./a.out 
+    caught SIGALRM
+    end fwrite
+    [moonlight@ArchLinux ex]$ ll -h BIG.file 
+    -rw-r--r-- 1 moonlight users 1.0G Oct 12 00:04 BIG.file
+
+Practically, I waited for a while, the `fwrite()` may have written 1G file before process handler.
 
