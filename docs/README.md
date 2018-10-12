@@ -15,6 +15,7 @@ download source code: http://www.apuebook.com/code3e.html
 # Charpter1
 # Charpter2
 # Charpter3
+[c3](/#/3.md)
 # Charpter4
 # Charpter5
 	standard I/O library.
