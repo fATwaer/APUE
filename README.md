@@ -10,7 +10,7 @@ download source code: http://www.apuebook.com/code3e.html
     $ sudo cp ./lib/libapue.a /usr/local/lib/
     
 ## Compile
-    $ gcc 1-3.c -o 1-3 -lapue
+    $ gcc 1-3.c -o 1-3 -lapue -Werror
 
 
 ## 	
@@ -26,4 +26,5 @@ download source code: http://www.apuebook.com/code3e.html
 - thread
 - mutex
 - deadlock
-    
+- read-write lock
+- 
