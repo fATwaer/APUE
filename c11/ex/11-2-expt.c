@@ -4,14 +4,12 @@
 
 
 struct job {
-    struct job     *j_next;
-    struct job     *j_prev;
-    pthread_t       j_id;
-    pthread_mutex_t j_mtx;
-    int             j_count;
+    struct job *j_next;
+    struct job *j_prev;
+    pthread_t   j_id;
     /** job */
     int (*j_add)(int);
-    int             j_num;
+    int         j_num;
 };
 
 struct queue {
@@ -69,38 +67,21 @@ job_append(struct queue *qp, struct job *jp)
 void
 job_remove(struct queue *qp, struct job *jp)
 {
-    pthread_mutex_lock(&jp->j_mtx);
-    if (jp->j_count == 1) {
-        /** avoid deadlock*/
-        pthread_mutex_unlock(&jp->j_mtx);
-        pthread_rwlock_wrlock(&qp->q_lock);
-        pthread_mutex_lock(&jp->j_mtx);
-
-        if (jp->j_count != 1) {
-            jp->j_count--;
-            pthread_mutex_unlock(&jp->j_mtx);
-            pthread_rwlock_unlock(&qp->q_lock);
-        }
-
-        if (jp == qp->q_head) {
-            qp->q_head = jp->j_next;
-            if (qp->q_tail == jp)
-                qp->q_tail = NULL;
-            else
-                jp->j_next->j_prev = jp->j_prev;
-        } else if (jp == qp->q_tail) {
-            qp->q_tail = jp->j_prev;
-            jp->j_prev->j_next = jp->j_next;
-        } else {
-            jp->j_prev->j_next = jp->j_next;
+    pthread_rwlock_wrlock(&qp->q_lock);
+    if (jp == qp->q_head) {
+        qp->q_head = jp->j_next;
+        if (qp->q_tail == jp)
+            qp->q_tail = NULL;
+        else
             jp->j_next->j_prev = jp->j_prev;
-        }
-        pthread_mutex_unlock(&jp->j_mtx);
-        pthread_rwlock_unlock(&qp->q_lock);
+    } else if (jp == qp->q_tail) {
+        qp->q_tail = jp->j_prev;
+        jp->j_prev->j_next = jp->j_next;
     } else {
-        jp->j_count--;
-        pthread_mutex_unlock(&jp->j_mtx);
+        jp->j_prev->j_next = jp->j_next;
+        jp->j_next->j_prev = jp->j_prev;
     }
+    pthread_rwlock_unlock(&qp->q_lock);
 }
 
 
@@ -114,14 +95,9 @@ job_find(struct queue *qp, pthread_t id)
 
     for (jp = qp->q_head; jp != NULL; jp = jp->j_next)
     {
-        printf("head %p now %p \n  |-job_id %lu cur_id %lu\n", qp->q_head, jp, (unsigned long)jp->j_id, (unsigned long)id);
+        printf("head %p now %p \n  |-job_id %lu cur_id %lu\n", (unsigned long)qp->q_head, jp, (unsigned long)jp->j_id, (unsigned long)id);
         if (pthread_equal(jp->j_id, id))
-        {
-            pthread_mutex_lock(&jp->j_mtx);
-            jp->j_count++;
-            pthread_mutex_unlock(&jp->j_mtx);
             break;
-        }
 
     }
 
@@ -146,9 +122,6 @@ job_alloc(struct queue *qp, int num)
     jp->j_add = add;
     jp->j_num = num;
     jp->j_id = pthread_self();
-    jp->j_count = 1;
-    pthread_mutex_init(&jp->j_mtx, NULL);
-
     job_insert(qp, jp);
 
     return (jp);
@@ -211,17 +184,12 @@ th_func2(void *arg)
     pthread_mutex_unlock(&statmtx);
 
 
-    while (1) {
-        jp = job_find((struct queue *)arg, pthread_self());
-        sleep(5);
-        printf("job adress %p\n", jp);
-        sleep(1);
-        job_remove((struct queue *)arg, jp);
 
-        if (jp->j_id == pthread_self())
-            break;
-    }
-
+    jp = job_find((struct queue *)arg, pthread_self());
+    sleep(5);
+    printf("job adress %p\n", jp);
+    sleep(1);
+    job_remove((struct queue *)arg, jp);
 
     /** processing job */
     sum = jp->j_add(jp->j_num);
@@ -303,10 +271,9 @@ main(void)
     modify_tid(&qn, tid2, tid3);
     th_resume();
 
-    sleep(15);
+    sleep(10);
 
     exit(0);
 
 }
-
 

@@ -1,6 +1,9 @@
 # APUE-Practice-Code
+my pages is: http://www.cflowerth.com/APUE-Practice-Code/
 
+## Install
 download source code: http://www.apuebook.com/code3e.html
+
 
 ## Enviroment
     $ tar -zxvf *.tar.gz
