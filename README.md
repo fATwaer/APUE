@@ -13,15 +13,24 @@ download source code: http://www.apuebook.com/code3e.html
     $ gcc 1-3.c -o 1-3 -lapue -Werror
 
 
-## 	
+## 	Outline
 
 ### Chapter 1
+    abc
+
 ### Chapter 2
+    stanard implement
+
 ### Chapter 3
+    read and write.
+
 ### Chapter 4
+    file and directory
+
 ### Chapter 5
     standard I/O library.
-### Chapter 11
+
+### Chapter 11  
   
 - thread
 - mutex
