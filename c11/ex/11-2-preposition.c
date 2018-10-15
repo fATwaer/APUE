@@ -233,6 +233,7 @@ main(void)
     int err;
     pthread_t tid1, tid2;
     queue_init(&qn);
+    
     setbuf(stdout, NULL);
     err = pthread_create(&tid1, NULL, th_func1, &qn);
     if (err != 0)
@@ -248,8 +249,6 @@ main(void)
 
         modify_tid(&qn, tid1, tid2);
     }
-
-
     th_resume();
     //sleep(1);
     printf("return = %d, main = %lu\n", pthread_barrier_wait(&b), (unsigned long)pthread_self());

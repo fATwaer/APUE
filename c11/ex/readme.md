@@ -39,3 +39,10 @@ modify_tid(struct queue *qp, pthread_t tid1, pthread_t tid2)
     return 0;
 }
 ``` 
+blog
+
+## 11-3
+
+Although I have done it before, it still have problem to solve. when I insert job into queue and send resume signal to all thread(by `pthread_cond_broadcast()`), something happens called `thundering herd`.
+
+ 

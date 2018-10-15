@@ -39,4 +39,11 @@ download source code: http://www.apuebook.com/code3e.html
 - mutex
 - deadlock
 - read-write lock
-- 
+- barrier
+
+### Chapter 14
+- unblocked I/O
+- select and poll
+- Asynchronous IO
+- scatter read/gather write
+- mmp
