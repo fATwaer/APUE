@@ -1,0 +1,17 @@
+Modern Computers Defined
+Modern computers are electronic and digital. The actual machinery -- wires, transistors, and circuits -- is called hardware; the instructions and data are called software.
+All general-purpose computers require the following hardware components:
+memory: enables a computer to store, at least temporarily, data and programs.
+mass storage device: allows a computer to permanently retain large amounts of data. Common mass storage devices include disk drives and tape drives.
+input device: usually a keyboard and mouse, the input device is the conduit through which data and instructions enter a computer.
+output device: a display screen, printer, or other device that lets you see what the computer has accomplished.
+central processing unit (CPU): the heart of the computer, this is the component that actually executes instructions.
+In addition to these components, many others make it possible for the basic components to work together efficiently. For example, every computer requires a bus that transmits data from one part of the computer to another.
+Computer Classification, By Size and Power
+Computers can be generally classified by size and power as follows, though there is considerable overlap:
+personal computer: a small, single-user computer based on a microprocessor. In addition to the microprocessor, a personal computer has a keyboard for entering data, a monitor for displaying information, and a storage device for saving data.
+workstation: a powerful, single-user computer. A workstation is like a personal computer, but it has a more powerful microprocessor and a higher-quality monitor.
+minicomputer: a multi-user computer capable of supporting from 10 to hundreds of users simultaneously.
+mainframe: a powerful multi-user computer capable of supporting many hundreds or thousands of users simultaneously.
+supercomputer: an extremely fast computer that can perform hundreds of millions of instructions per second.
+
