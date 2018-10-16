@@ -58,7 +58,7 @@ main(int argc, char *argv[])
         err_sys("gethostname error");
 
     printf("daemonize, host = %s\n", host);
-   // daemonize("ruptimed");
+    //daemonize("ruptimed");
     memset(&hint, 0, sizeof(hint));
     hint.ai_flags = AI_CANONNAME;
     hint.ai_socktype = SOCK_STREAM;
@@ -67,9 +67,10 @@ main(int argc, char *argv[])
     hint.ai_next = NULL;
     if ((err = getaddrinfo(host, "ruptime", &hint, &ailist)) != 0) {
         syslog(LOG_ERR, "ruptimed: getaddrinfo error: %s", gai_strerror(err));
+        printf("getaddrinfo error = %s\n", gai_strerror(err));
         exit(0);
     }
-    printf("getaddrinfo ok\n");
+
     for (aip = ailist; aip != NULL; aip = aip->ai_next) {
         if ((sockfd = initserver(SOCK_STREAM, aip->ai_addr, aip->ai_addrlen, QLNE)) >= 0) {
             server(sockfd);
