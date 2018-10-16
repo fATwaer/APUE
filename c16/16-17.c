@@ -58,7 +58,10 @@ main(int argc, char *argv[])
         err_sys("gethostname error");
 
     printf("daemonize, host = %s\n", host);
-    //daemonize("ruptimed");
+    //daemonize("ruptimed");    // fork -> child
+                                //          fork -> child
+                                //                   fork -> child (daemon)
+
     memset(&hint, 0, sizeof(hint));
     hint.ai_flags = AI_CANONNAME;
     hint.ai_socktype = SOCK_STREAM;
