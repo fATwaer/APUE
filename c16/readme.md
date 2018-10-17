@@ -18,6 +18,6 @@ To solve the problem, add this line into `/etc/services`, allocate a port for th
 
 use `hostname` not `localhost`
 
-if don't know the hostname, just print the hostname after 16-17 called the ``gethostname()`.
+if don't know the hostname, just print the hostname after 16-17 called the `gethostname()`.
 
 ![ruptime](https://github.com/fATwaer/APUE/tree/master/docs/pic/ruptime.png)
