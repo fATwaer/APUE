@@ -56,6 +56,28 @@ thr_fn(void *arg)
     return ((void *)0);
 }
 
+void
+_merge()
+{
+    long    idx[NTHR];
+    long    i, minidx, sidx, num;
+
+    for (i = 0; i < NTHR; i++)
+        idx[i] = i * TNUM;
+    for (sidx = 0; sidx < NUMNUM; sidx++) {
+        num = LONG_MAX;
+        for (i = 0; i < NTHR; i++) {
+            if ((idx[i] < (i+1)*TNUM) && (nums[idx[i]] < num)) {
+                num = nums[idx[i]];
+                minidx = i;
+            }
+        }
+        snums[sidx] = nums[idx[minidx]];
+        idx[minidx]++;
+    }
+}
+
+
 int
 main(int argc, char *argv[])
 {
@@ -82,10 +104,22 @@ main(int argc, char *argv[])
     }
 
     pthread_barrier_wait(&b);
+    _merge();
+    gettimeofday(&end, NULL);
 
-
+    startusec = start.tv_sec * 1000000 + start.tv_usec;
+    endusec = end.tv_sec * 1000000 + start.tv_usec;
+    elapsed = (double)(endusec - startusec) /1000000.0;
+    printf("sort took %4.f seconds\n", elapsed);
+    for (i = 0; i < 5; i++)
+        printf("%ld ", snums[i]);
+    printf("   ... ...    ");
+    for (i = NUMNUM - 5; i < NUMNUM; i++)
+        printf("%ld ", snums[i]);
+    printf("\n");
 
     exit(1);
 }
+
 
 
