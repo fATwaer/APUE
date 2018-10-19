@@ -45,4 +45,18 @@ blog
 
 Although I have done it before, it still have problem to solve. when I insert job into queue and send resume signal to all thread(by `pthread_cond_broadcast()`), something happens called `thundering herd`.
 
- 
+
+## 11-5
+
+    [moonlight@ArchLinux ex]$ ./a.out 
+    main thread = 139852607076160
+    thread(139852607072000) -> barrier
+    thread(139852598679296) -> barrier
+    thread(139852590286592) -> barrier
+    thread(139852581893888) -> barrier
+    thread(139852581893888) out barrier
+    thread(139852607072000) out barrier
+    thread(139852598679296) out barrier
+    main thread exiting
+    thread(139852590286592) out barrier
+    [moonlight@ArchLinux ex]$  
