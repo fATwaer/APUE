@@ -9,3 +9,21 @@
     [moonlight@ArchLinux ex]$
 
 little-endian: the LSB value ,0x78, is at the lowest address.
+
+## 16-2
+
+    [moonlight@ArchLinux ex]$ ./a.out
+    sockfd:
+     i-node number = 61173
+     device number = 9
+     device number(special files) = 0
+     number of links = 1
+     owner userID = 1000
+     groupID = 985
+     file size = 0
+     last access = 0
+     last modification = 0
+     last file status change = 0
+     best I/O block size = 4096
+     allocated block = 0
+
