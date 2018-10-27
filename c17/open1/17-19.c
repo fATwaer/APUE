@@ -40,7 +40,7 @@ csopen(char *name, int oflag)
         close(fd[1]);               //parent
     }
     sprintf(buf, " %d", oflag);
-    iov[0].iov_base = CL_OPEN;
+    iov[0].iov_base = CL_OPEN " ";
     iov[0].iov_len = strlen(CL_OPEN) + 1;
     iov[1].iov_base = name;
     iov[1].iov_len = strlen(name);
