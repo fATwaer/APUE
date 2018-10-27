@@ -44,7 +44,7 @@ send_fd(int fd, int fd_to_send)
 
 
     }
-    buf[1] = 0;
+    buf[0] = 0;
     if (sendmsg(fd, &msg, 0) != 2)  // sendmsg return the buffer bytes that
         return (-1);                //iov_base  pointer to
 

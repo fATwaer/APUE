@@ -22,7 +22,7 @@ cli_conn(const char *name)
 
     if (strlen(name) >= sizeof(un.sun_path)) {
         errno = ENAMETOOLONG;
-        goto errout;
+        return (-1);
     }
 
     if ((fd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0)
